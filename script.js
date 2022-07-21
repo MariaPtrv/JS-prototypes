@@ -1,16 +1,17 @@
-Array.prototype._join = function(separator) {
-    let str = ""
-    let s =  separator ? separator : ","
-    for (let i = 0; i < this.length; i++) {
-        if (i!== this.length-1 )
-            str+=this[i] + s;
-        else str+=this[i]
+Array.prototype._shift = function() {
+    let firstElement = this[0];
+    for (let i = 1; i < this.length; i++){
+        this[i-1] = this[i]
     }
-    return str;
+    this.pop();
+    return firstElement;
 };
 
 let array = [1,2,3,4,5]
-let newArray = array._join("=")
+let newArray = array._shift()
 console.log(newArray)
+console.log(array)
 
-console.log(array.join("="))
+let array1 = [1,2,3,4,5]
+console.log(array1.shift())
+console.log(array1)
