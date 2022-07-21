@@ -1,17 +1,17 @@
-Array.prototype._shift = function() {
-    let firstElement = this[0];
-    for (let i = 1; i < this.length; i++){
-        this[i-1] = this[i]
+Array.prototype._reduce = function(callback, initialValue) {
+    let currentValue = initialValue
+    for (let i = 0; i < this.length; i++){
+        currentValue=callback(currentValue, this[i], i, this)
     }
-    this.pop();
-    return firstElement;
+    return currentValue;
 };
 
-let array = [1,2,3,4,5]
-let newArray = array._shift()
-console.log(newArray)
-console.log(array)
+let array = [{val: 10}, {val: 10},{val: 10},{val: 10}]
+console.log(array._reduce(
+    (previousValue, { val }) => previousValue + val, 0
+));
 
-let array1 = [1,2,3,4,5]
-console.log(array1.shift())
-console.log(array1)
+let array1 = [{val: 10}, {val: 10},{val: 10},{val: 10}]
+console.log(array1.reduce(
+    (previousValue, { val }) => previousValue + val, 0
+));
