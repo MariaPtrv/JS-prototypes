@@ -2,7 +2,7 @@ Array.prototype.map= function(callback) {
     let newArray = []
     for (let index=0; index < this.length; index++) {
         let currentValue = this[index]
-        newArray.push(callback(currentValue, index, this));
+        newArray.push(callback( currentValue, index, this));
     }
     return  newArray;
 };
