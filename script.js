@@ -1,15 +1,14 @@
-Array.prototype.forEach = function(callback) {
-    let arr = this
-    console.log(this)
-    console.log(arr[0])
-    for (let index=0; index < arr.length; index++) {
-        console.log("inside item: " + arr[index] + "  index: " + index);
-        callback.call(arr[index], index, arr);
+Array.prototype.map= function(callback) {
+    let newArray = []
+    for (let index=0; index < this.length; index++) {
+        let currentValue = this[index]
+        newArray.push(callback.call(currentValue, index, this));
     }
-    return callback
+    return  newArray;
 };
 
-[1,2,3].forEach(
-    function (item, index){
-        console.log( item+ "  " + index )
+let array = [1,2,3, 4, 5]
+let newArray = array.map( (item, index, arr) =>{
+       return (item * 2)
     })
+console.log(newArray)
