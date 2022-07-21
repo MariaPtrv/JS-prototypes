@@ -1,14 +1,16 @@
-Array.prototype.map= function(callback) {
-    let newArray = []
-    for (let index=0; index < this.length; index++) {
-        let currentValue = this[index]
-        newArray.push(callback( currentValue, index, this));
+Array.prototype._join = function(separator) {
+    let str = ""
+    let s =  separator ? separator : ","
+    for (let i = 0; i < this.length; i++) {
+        if (i!== this.length-1 )
+            str+=this[i] + s;
+        else str+=this[i]
     }
-    return  newArray;
+    return str;
 };
 
 let array = [1,2,3,4,5]
-let newArray = array.map( (item, index, arr) =>{
-       return (item * 2)
-    })
+let newArray = array._join("=")
 console.log(newArray)
+
+console.log(array.join("="))
